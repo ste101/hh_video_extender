@@ -1,0 +1,34 @@
+{
+    "name": "hauerheinrich/hh-video-extender",
+    "type": "typo3-cms-extension",
+    "description": "extends sys_file_reference video; added muted and loop attribute",
+    "authors": [
+        {
+            "name": "Christian Hackl",
+            "email": "info@hauer-heinrich.de",
+            "homepage": "http://www.hauer-heinrich.de",
+            "role": "Developer"
+        }
+    ],
+    "version": "0.1.0",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS", "Theme", "Distribution"],
+    "replace": {
+        "hh_video_extender": "self.version",
+        "typo3-ter/hh-video-extender": "self.version"
+    },
+    "require": {
+        "typo3/cms-core": "^9.5.0 || ^9.9.99",
+        "fluid_styled_content": "^9.5.0 || ^9.9.99"
+    },
+    "autoload": {
+        "psr-4": {
+            "HauerHeinrich\\HhVideoExtender\\": "Classes"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "hh_video_extender"
+        }
+    }
+}
