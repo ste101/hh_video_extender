@@ -35,12 +35,8 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer {
     public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false) {
         if ($file->getProperty('defer') === 1) {
             $string = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
-            $uid = $file->getProperty('uid');
-            $newString = str_replace('<iframe', '<iframe id="vid-'.$uid.'" class="video-defer"', $string);
-            $newSrc = str_replace('src=', 'data-src=', $newString);
-            $javaScript = '<script>window.onload = function() {var vidDefer_'.$uid.' = document.getElementById("vid-'.$uid.'");if(vidDefer_'.$uid.'.getAttribute("data-src")) {vidDefer_'.$uid.'.setAttribute("src",vidDefer_'.$uid.'.getAttribute("data-src")); }};</script>';
-            $result = $newSrc.$javaScript;
-            return $result;
+            $newString = str_replace('<iframe', '<iframe class="video-defer"', $string);
+            return str_replace('src=', 'data-src=', $newString);
         }
 
         return parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);

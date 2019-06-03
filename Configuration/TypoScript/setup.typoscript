@@ -1,0 +1,6 @@
+page {
+    includeJSFooter {
+        HhVideoExtender = EXT:hh_video_extender/Resources/Public/JavaScript/main.js
+        HhVideoExtender.defer = 1
+    }
+}
