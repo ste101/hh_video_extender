@@ -1,13 +1,15 @@
 # hh_video_extender
-hh_video_extender is a TYPO3 extension
+hh_video_extender is a TYPO3 extension.
+Extends TYPO3 core videorenderer with following properties:
+- for vimeo and youtube: defer loading (uses javascript to load video resource after page load)
+- for internal videos webp, mp4 and so on: loop, muted, preload, controls
 
 ### Installation
 ... like any other TYPO3 extension
 
 ### Features
-- No own TypoScript required
-- No own php-script required
-- only FLUID (ViewHelper)
+- added default html5 video attributes to enable at the TYPO3 backend
+- no changes in FLUID required
 
 ### Todos
 - currently nothing
