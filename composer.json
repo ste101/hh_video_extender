@@ -12,7 +12,7 @@
     ],
     "version": "0.1.0",
     "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS", "Theme", "Distribution"],
+    "keywords": ["TYPO3 CMS", "extension"],
     "replace": {
         "hh_video_extender": "self.version",
         "typo3-ter/hh-video-extender": "self.version"
