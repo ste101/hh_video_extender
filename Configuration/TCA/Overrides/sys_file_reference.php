@@ -35,7 +35,7 @@ $customColumns = [
     'muted' => [
         'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',
         'exclude' => true,
-        'label' => 'muted (automaticly on autoplay)',
+        'label' => 'muted (automatically on autoplay)',
         'config' => [
             'type' => 'check',
             'renderType' => 'checkboxToggle',
@@ -81,6 +81,40 @@ $customColumns = [
             ],
         ]
     ],
+
+    'preview_image' => [
+        'label' => 'preview image',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'media',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference',
+                    'collapseAll' => 1,
+                    'expandSingle' => 1,
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                    ],
+                ],
+
+                'minitems' => 0,
+                'maxitems' => 1,
+            ],
+            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+        ),
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
@@ -91,5 +125,5 @@ $customColumns = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'sys_file_reference',
     'videoOverlayPalette',
-    'loop, muted, preload, defer, controls'
+    'loop, muted, preload, defer, controls, --linebreak--, preview_image'
 );

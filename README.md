@@ -11,6 +11,8 @@ Extends TYPO3 core videorenderer with following properties:
 - added default html5 video attributes to enable at the TYPO3 backend
 - no changes in FLUID required
 - automatically add TypoScript, can be disabled in the extension configuration (BE). Then you can choose it from template-modul = static-templates.
+- previewImage / poster-image can be set in the backend directly in the content-element
+- defaultPreviewImage can be set too (Configuration/TypoScript/setup.typoscript)
 
 ### Todos
 - currently nothing

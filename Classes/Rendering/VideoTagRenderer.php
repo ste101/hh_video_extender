@@ -14,7 +14,8 @@ namespace HauerHeinrich\HhVideoExtender\Rendering;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\FileReference;
 
@@ -31,8 +32,16 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
      * @return string
      */
     public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false) {
-        $params = ['loop', 'muted'];
+        $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $configurationManager = $objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+        $settings = $configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+            'hh_video_extender',
+            'hhvideoextender'
+        );
+        $typoScript = $settings['plugin.']['tx_hhvideoextender.']['settings.'];
 
+        $params = ['loop', 'muted'];
         if($file instanceof FileReference) {
             foreach ($params as $param) {
                 if(!isset($options[$param])) {
@@ -117,6 +126,19 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         foreach (['class', 'dir', 'id', 'lang', 'style', 'title', 'accesskey', 'tabindex', 'onclick', 'controlsList', 'preload'] as $key) {
             if (!empty($options[$key])) {
                 $attributes[] = $key . '="' . htmlspecialchars($options[$key]) . '"';
+            }
+        }
+
+        // if override is set and typoscript previewImage is set
+        if($typoScript['previewOverride'] === '1' && !empty($typoScript['previewImage'])) {
+            $attributes[] = 'poster="'.$typoScript['previewImage'].'"';
+        } else if($typoScript['previewOverride'] === '0') {
+            $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+            $fileObjects = $fileRepository->findByRelation('sys_file_reference', 'media', $file->getProperty('uid'));
+            if(!empty($fileObjects)) {
+                $attributes[] = 'poster="'.$fileObjects[0]->getPublicUrl().'"';
+            } else if(!empty($typoScript['previewImage'])) {
+                $attributes[] = 'poster="'.$typoScript['previewImage'].'"';
             }
         }
 

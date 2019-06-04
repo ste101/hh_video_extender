@@ -19,4 +19,7 @@ call_user_func(function() {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\VimeoRenderer'] = array(
         'className' => 'HauerHeinrich\\HhVideoExtender\\Rendering\\VimeoRenderer'
     );
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\FileReference'] = array(
+        'className' => 'HauerHeinrich\\HhVideoExtender\\Resource\\FileReference'
+    );
 });
