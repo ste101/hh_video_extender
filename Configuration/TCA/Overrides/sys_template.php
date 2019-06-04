@@ -5,9 +5,12 @@ call_user_func(function() {
 
     $extensionKey = 'hh_video_extender';
 
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-        $extensionKey,
-        'Configuration/TypoScript',
-        'Hauer-Heinrich - Video Extender'
-    );
+    // If automatically include of TypoScript is disabled, then you can include it in the (BE) static-template select-box
+    if ($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][$extensionKey]['config']['typoScript'] === '0') {
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+            $extensionKey,
+            'Configuration/TypoScript',
+            'Hauer-Heinrich - Video Extender'
+        );
+    }
 });
