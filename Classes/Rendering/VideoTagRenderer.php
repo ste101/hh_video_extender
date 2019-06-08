@@ -63,13 +63,6 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
             }
         }
 
-        if(!isset($options['controls'])) {
-            $val = $file->getProperty('controls');
-            if($val !== null) {
-                $options['controls'] = 'controls';
-            }
-        }
-
         if(!isset($options['preload'])) {
             $val = $file->getProperty('preload');
             if($val !== null) {
@@ -103,8 +96,8 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         if ((int)$height > 0) {
             $attributes[] = 'height="' . (int)$height . '"';
         }
-        if (!empty($options['controls'])) {
-            $attributes[] = $options['controls'];
+        if($file->getProperty('controls') === 1) {
+            $attributes[] = 'controls';
         }
         if (!empty($options['autoplay'])) {
             $attributes[] = 'autoplay';
