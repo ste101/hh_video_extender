@@ -11,7 +11,7 @@
 
 $EM_CONF['hh_video_extender'] = [
     'title' => 'Hauer-Heinrich - Video Extender',
-    'description' => 'extends sys_file_reference video; added muted and loop attribute',
+    'description' => 'Extends sys_file_reference video/media. Added attributes to select in content element (eg textmedia) like: muted, loop, controls, previewImage and so on.',
     'category' => 'fe',
     'author' => 'Christian Hackl',
     'author_email' => 'chackl@hauer-heinrich.de',
