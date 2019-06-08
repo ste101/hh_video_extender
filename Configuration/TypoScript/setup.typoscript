@@ -11,7 +11,7 @@ page {
 
 plugin.tx_hhvideoextender {
     settings {
-        previewImage = fileadmin/user_upload/0_banner/bavarianracecup_team_banner_1.jpg
+        previewImage =
         previewImage_alt =
         previewImage_title =
         previewOverride = 0

@@ -1,7 +1,7 @@
 <?php
 $customColumns = [
     'controls' => [
-        'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',
+        // 'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',
         'exclude' => true,
         'label' => 'Controls',
         'config' => [
@@ -17,7 +17,7 @@ $customColumns = [
         ]
     ],
     'loop' => [
-        'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',
+        // 'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',
         'exclude' => true,
         'label' => 'Loop',
         'config' => [
@@ -81,6 +81,23 @@ $customColumns = [
             ],
         ]
     ],
+    'relatedVideos' => [
+        'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isExternalFile',
+        'exclude' => true,
+        'label' => 'Disable related videos',
+        'description' => 'Works only for youtube, still shows channel own videos',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+            'default' => 1,
+            'items' => [
+                [
+                    0 => '',
+                    1 => '',
+                ]
+            ],
+        ]
+    ],
 
     'preview_image' => [
         'label' => 'preview image',
@@ -125,5 +142,5 @@ $customColumns = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'sys_file_reference',
     'videoOverlayPalette',
-    'loop, muted, preload, defer, controls, --linebreak--, preview_image'
+    'loop, muted, preload, defer, relatedVideos, controls, --linebreak--, preview_image'
 );

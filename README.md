@@ -20,6 +20,8 @@ Extends TYPO3 core videorenderer with following properties:
 ### Deprecated
 - currently nothing
 
+### IMPORTENT NOTICE
+- Vimeo is not tested!
 
 ##### Copyright notice
 

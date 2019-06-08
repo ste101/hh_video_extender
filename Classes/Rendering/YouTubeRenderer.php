@@ -61,15 +61,28 @@ class YouTubeRenderer extends \TYPO3\CMS\Core\Resource\Rendering\YouTubeRenderer
             }
         }
 
+        $options = $this->collectOptions($options, $file);
+        $options['relatedVideos'] = $file->getProperty('relatedVideos');
+        $options['autoplay'] = $file->getProperty('autoplay');
+        $options['loop'] = $file->getProperty('loop');
+        $options['controls'] = $file->getProperty('controls') ? 2 : 0;
+
+        $src = $this->createYouTubeUrl($options, $file);
+        $attributes = $this->collectIframeAttributes($width, $height, $options);
+
+        $string = sprintf(
+            '<iframe src="%s"%s></iframe>',
+            htmlspecialchars($src, ENT_QUOTES | ENT_HTML5),
+            empty($attributes) ? '' : ' ' . $this->implodeAttributes($attributes)
+        );
+
         // If TypoScript default previewImage is set
         if ($file->getProperty('defer') === 1) {
-            $string = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
             $newString = str_replace('<iframe', '<iframe class="video-defer"', $string);
             $dataSrc = str_replace('src=', 'data-src=', $newString);
             return $dataSrc.$previewImage;
         }
 
-        $original = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
-        return $original.$previewImage;
+        return $string.$previewImage;
     }
 }
