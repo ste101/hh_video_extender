@@ -18,7 +18,7 @@ Extends TYPO3 core videorenderer with properties like:
 - defaultPreviewImage can be set too (Configuration/TypoScript/setup.typoscript)
 
 ### Todos
-- currently nothing
+- move preview-image to a css background solution
 
 ### Deprecated
 - currently nothing

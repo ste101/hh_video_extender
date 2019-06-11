@@ -1,9 +1,49 @@
+.video {
+    &[data-type="external"] {
+        .video-embed {
+            padding-top: 56.25%;
+            overflow: hidden;
+
+            > iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        }
+    }
+}
+
 .video-embed {
-    .video-preview { left: 0; position: absolute; top: 0; width: 100%; }
-    .video-defer { opacity: 0; transition: all 500ms; }
+    left: 0;
+    position: relative;
+    top: 0;
+
+    .video-embed-item {
+        max-width: 100%;
+    }
+
+    .video-preview {
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .video-defer {
+        opacity: 0;
+        transition: all 500ms;
+    }
 
     &.loaded {
-        .video-preview { display: none; }
-        .video-defer { opacity: 1; }
+        .video-preview {
+            display: none;
+        }
+
+        .video-defer {
+            opacity: 1;
+        }
     }
 }

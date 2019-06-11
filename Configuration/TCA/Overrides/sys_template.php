@@ -12,5 +12,11 @@ call_user_func(function() {
             'Configuration/TypoScript',
             'Hauer-Heinrich - Video Extender'
         );
+
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+            $extensionKey,
+            'Configuration/TypoScript/addFluid.typoscript',
+            'Hauer-Heinrich - Video Extender: add fluid html'
+        );
     }
 });

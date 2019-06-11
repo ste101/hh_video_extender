@@ -1,0 +1,35 @@
+tt_content.image {
+    templateRootPaths {
+        15 = EXT:hh_video_extender/Resources/Private/Templates/
+    }
+    partialRootPaths {
+        15 = EXT:hh_video_extender/Resources/Private/Partials/
+    }
+    layoutRootPaths {
+        15 = EXT:hh_video_extender/Resources/Private/Layouts/
+    }
+}
+
+tt_content.textmedia {
+    templateRootPaths {
+        15 < tt_content.image.templateRootPaths.15
+    }
+    partialRootPaths {
+        15 < tt_content.image.partialRootPaths.15
+    }
+    layoutRootPaths {
+        15 < tt_content.image.layoutRootPaths.15
+    }
+}
+
+tt_content.textpic {
+    templateRootPaths {
+        15 < tt_content.image.templateRootPaths.15
+    }
+    partialRootPaths {
+        15 < tt_content.image.partialRootPaths.15
+    }
+    layoutRootPaths {
+        15 < tt_content.image.layoutRootPaths.15
+    }
+}
