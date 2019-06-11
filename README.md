@@ -26,6 +26,8 @@ Extends TYPO3 core videorenderer with properties like:
 ### IMPORTENT NOTICE
 - Vimeo is not tested!
 
+![example picture from backend](github/images/preview.jpg?raw=true "Title")
+
 ##### Copyright notice
 
 This repository is part of the TYPO3 project. The TYPO3 project is
