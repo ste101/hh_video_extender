@@ -60,7 +60,7 @@ $customColumns = [
                 ['metadata', 1, ''],
                 ['none', 2, ''],
             ],
-            'default' => 2,
+            'default' => 0,
         ]
     ],
 
