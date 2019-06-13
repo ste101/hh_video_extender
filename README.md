@@ -16,6 +16,7 @@ Extends TYPO3 core videorenderer with properties like:
 - automatically add TypoScript, can be disabled in the extension configuration (BE). Then you can choose it from template-modul = static-templates.
 - previewImage / poster-image can be set in the backend directly in the content-element
 - defaultPreviewImage can be set too (Configuration/TypoScript/setup.typoscript)
+- determines whether in the same directory as the mp4 video synonymous webm or ogg / ogv / ogm videos are with the same name, if so they are added as source
 
 ### Todos
 - move preview-image to a css background solution
@@ -25,6 +26,7 @@ Extends TYPO3 core videorenderer with properties like:
 
 ### IMPORTENT NOTICE
 - Vimeo is not tested!
+- If you have problems with autoplay video on IE/EDGE then try to set "options.preload" to "auto".
 
 ![example picture from backend](github/images/preview.jpg?raw=true "Title")
 

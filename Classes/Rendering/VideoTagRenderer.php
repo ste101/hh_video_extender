@@ -14,7 +14,7 @@ namespace HauerHeinrich\HhVideoExtender\Rendering;
  * The TYPO3 project - inspiring people to share!
  */
 
-// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\FileReference;
@@ -138,11 +138,55 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         // Clean up duplicate attributes
         $attributes = array_unique($attributes);
 
-        return sprintf(
-            '<video%s><source src="%s" type="%s"></video>',
-            empty($attributes) ? '' : ' ' . implode(' ', $attributes),
+        $resource = $file->getPublicUrl($usedPathsRelativeToCurrentScript);
+        $removedExtension = substr_replace($resource ,"", -3);
+
+        $videoSources = '';
+        // webm
+        if(file_exists($removedExtension.'webm')) {
+            $videoSources .= sprintf(
+                '<source src="%s" type="%s">',
+                htmlspecialchars($removedExtension.'webm'),
+                "video/webm"
+            );
+        }
+
+        // mp4 - default
+        $videoSources .= sprintf(
+            '<source src="%s" type="%s">',
             htmlspecialchars($file->getPublicUrl($usedPathsRelativeToCurrentScript)),
             $file->getMimeType()
         );
+
+        // ogv - ogg - ogm
+        if(file_exists($removedExtension.'ogv')) {
+            $videoSources .= sprintf(
+                '<source src="%s" type="%s">',
+                htmlspecialchars($removedExtension.'ogv'),
+                "video/ogg"
+            );
+        }
+        if(file_exists($removedExtension.'ogg')) {
+            $videoSources .= sprintf(
+                '<source src="%s" type="%s">',
+                htmlspecialchars($removedExtension.'ogg'),
+                "video/ogg"
+            );
+        }
+        if(file_exists($removedExtension.'ogm')) {
+            $videoSources .= sprintf(
+                '<source src="%s" type="%s">',
+                htmlspecialchars($removedExtension.'ogm'),
+                "video/ogg"
+            );
+        }
+
+        $videoTagBegin = sprintf(
+            '<video%s>',
+            empty($attributes) ? '' : ' ' . implode(' ', $attributes)
+        );
+        $videoTagEnd = '</video>';
+
+        return $videoTagBegin . $videoSources . $videoTagEnd;
     }
 }

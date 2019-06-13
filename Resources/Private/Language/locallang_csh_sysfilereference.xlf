@@ -16,7 +16,7 @@
             </trans-unit>
 
             <trans-unit id="preload.description" approved="yes">
-                <source>Specifies if and how the author thinks the video should be loaded when the page loads. Note: The preload attribute is ignored if autoplay is present.</source>
+                <source>Specifies if and how the author thinks the video should be loaded when the page loads. Note: The preload attribute is ignored if autoplay is present. (ONLY IE/EDGE: recommended to set this to 'auto' if you have problems with autoplay)</source>
             </trans-unit>
 
             <trans-unit id="defer.description" approved="yes">
