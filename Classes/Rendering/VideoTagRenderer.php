@@ -81,6 +81,7 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         }
 
         $attributes = [];
+        $attributes[] = 'playsinline'; // WebKit for autoplay set default playsinline: https://html.spec.whatwg.org/multipage/media.html#attr-video-playsinline
         if (isset($options['additionalAttributes']) && is_array($options['additionalAttributes'])) {
             $attributes[] = GeneralUtility::implodeAttributes($options['additionalAttributes'], true, true);
         }
