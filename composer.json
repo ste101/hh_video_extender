@@ -1,7 +1,7 @@
 {
     "name": "hauerheinrich/hh-video-extender",
     "type": "typo3-cms-extension",
-    "description": "Extends sys_file_reference video/media. Added attributes to select in content element (eg textmedia) like: muted, loop, controls, previewImage and so on.",
+    "description": "Hauer-Heinrich - Extends sys_file_reference video/media. Added attributes to select in content element (eg textmedia) like: muted, loop, controls, previewImage and so on.",
     "authors": [
         {
             "name": "Christian Hackl",
