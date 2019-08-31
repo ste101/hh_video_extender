@@ -23,4 +23,10 @@ call_user_func(function() {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\FileReference'] = array(
         'className' => 'HauerHeinrich\\HhVideoExtender\\Resource\\FileReference'
     );
+
+    $GLOBALS['TYPO3_CONF_VARS']
+        ['SC_OPTIONS']
+        ['cms/layout/class.tx_cms_layout.php']
+        ['tt_content_drawItem']
+        ['textmedia'] = 'HauerHeinrich\\HhVideoExtender\\Hooks\\PageLayoutViewDrawItemHook';
 });
