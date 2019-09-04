@@ -11,16 +11,13 @@ call_user_func(function() {
     }
 
     // Overwrite Core Classes
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\VideoTagRenderer'] = array(
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\VideoTagRenderer'] = [
         'className' => 'HauerHeinrich\\HhVideoExtender\\Rendering\\VideoTagRenderer'
-    );
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\YouTubeRenderer'] = array(
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\YouTubeRenderer'] = [
         'className' => 'HauerHeinrich\\HhVideoExtender\\Rendering\\YouTubeRenderer'
-    );
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\VimeoRenderer'] = array(
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\Rendering\\VimeoRenderer'] = [
         'className' => 'HauerHeinrich\\HhVideoExtender\\Rendering\\VimeoRenderer'
-    );
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\FileReference'] = array(
-        'className' => 'HauerHeinrich\\HhVideoExtender\\Resource\\FileReference'
-    );
+    ];
 });
