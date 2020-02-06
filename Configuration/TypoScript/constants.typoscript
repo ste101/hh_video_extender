@@ -1,0 +1,17 @@
+plugin.tx_hhvideoextender {
+    ### Basic
+    # cat=plugin.tx_hhvideoextender/basic/0010; type=string; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.previewImage
+        previewImage =
+
+    # cat=plugin.tx_hhvideoextender/basic/0020; type=string; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.previewImage_alt
+        previewImage_alt =
+
+    # cat=plugin.tx_hhvideoextender/basic/0030; type=string; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.previewImage_title
+        previewImage_title =
+
+    # cat=plugin.tx_hhvideoextender/basic/0040; type=boolean; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.previewOverride
+        previewOverride = 0
+
+    # cat=plugin.tx_hhvideoextender/basic/0050; type=boolean; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.showAllwaysPreviewImageAsImage
+        showAllwaysPreviewImageAsImage = 0
+}

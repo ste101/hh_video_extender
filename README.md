@@ -15,7 +15,9 @@ Extends TYPO3 core videorenderer with properties like:
 - no changes in FLUID required
 - automatically add TypoScript, can be disabled in the extension configuration (BE). Then you can choose it from template-modul = static-templates.
 - previewImage / poster-image can be set in the backend directly in the content-element
-- defaultPreviewImage can be set too (Configuration/TypoScript/setup.typoscript)
+- defaultPreviewImage can be set too as fallback (constants-editor)
+- you can overwrite the previewImage witch is set at the content-element (constants-editor)
+- you can output the preview image always as additonal img-tag instead of poster-attribute (constants-editor)
 - determines whether in the same directory as the mp4 video synonymous webm or ogg / ogv / ogm videos are with the same name, if so they are added as source
 
 ### Todos
@@ -27,6 +29,7 @@ Extends TYPO3 core videorenderer with properties like:
 ### IMPORTENT NOTICE
 - Vimeo is not tested!
 - If you have problems with autoplay video on IE/EDGE then try to set "options.preload" to "auto".
+- poster attribute only works if preload is set to 'none', but you have the option to set the preview image as img-tag: see features
 
 ![example picture from backend](github/images/preview.jpg?raw=true "Title")
 

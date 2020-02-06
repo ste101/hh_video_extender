@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2017-02-08T00:01:00Z" product-name="typo3themeskeleton">
+        <header/>
+        <body>
+
+            <trans-unit id="config.previewImage" xml:space="preserve">
+                <source>URL / Path of the preview image (e. g. fileadmin/user_upload/myImage.jpg)</source>
+            </trans-unit>
+
+            <trans-unit id="config.previewImage_alt" xml:space="preserve">
+                <source>Alt attribute for the preview image defined above</source>
+            </trans-unit>
+
+            <trans-unit id="config.previewImage_title" xml:space="preserve">
+                <source>Title attribute for the preview image defined above</source>
+            </trans-unit>
+
+            <trans-unit id="config.previewOverride" xml:space="preserve">
+                <source>Should the preview image defined from the CE be overwritten with the one defined above?</source>
+            </trans-unit>
+
+            <trans-unit id="config.showAllwaysPreviewImageAsImage" xml:space="preserve">
+                <source>Should the preview image always be output as a separate image tag?</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
