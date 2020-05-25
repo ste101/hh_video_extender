@@ -1,4 +1,5 @@
 plugin.tx_hhvideoextender {
+    isLoaded = 1
     ### Basic
     # cat=plugin.tx_hhvideoextender/basic/0010; type=string; label=LLL:EXT:hh_video_extender/Resources/Private/Language/locallang_constants.xlf:config.previewImage
         previewImage =
