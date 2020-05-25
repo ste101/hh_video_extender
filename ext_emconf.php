@@ -20,11 +20,11 @@ $EM_CONF['hh_video_extender'] = [
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '0.1.61',
+    'version' => '0.1.62',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-9.9.99',
-            'fluid_styled_content' => '9.5.0-9.9.99'
+            'typo3' => '9.5.0-10.4.99',
+            'fluid_styled_content' => '9.5.0-10.4.99'
         ],
         'conflicts' => [
         ],
