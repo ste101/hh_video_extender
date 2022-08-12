@@ -33,3 +33,11 @@ tt_content.textpic {
         15 < tt_content.image.layoutRootPaths.15
     }
 }
+
+plugin.tx_news {
+    view {
+        partialRootPaths {
+            15 < tt_content.image.partialRootPaths.15
+        }
+    }
+}

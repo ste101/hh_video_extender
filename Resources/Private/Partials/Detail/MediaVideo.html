@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhve="http://typo3.org/ns/HauerHeinrich/HhVideoExtender/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<hhve:getTypoScriptConfig as="hhvideoextender" />
+<f:variable name="clickPreviewImage"><f:if condition="{hhvideoextender.clickPreviewImageToShowVideo}"><f:then>{hhvideoextender.clickPreviewImageToShowVideo}</f:then><f:else>{mediaElement.originalResource.properties.click_preview_image_to_show_video}</f:else></f:if></f:variable>
+
+<div class="mediaelement" data-type="{f:if(condition: '{mediaElement.originalResource.extension} == youtube || {mediaElement.originalResource.extension} == vimeo', then: 'external')}" data-click-previewimage="{clickPreviewImage}">
+    <div class="mediaelement-video video-embed">
+        <f:media file="{mediaElement}" width="{settings.detail.media.video.width}" height="{settings.detail.media.video.height}"/>
+    </div>
+
+    <f:if condition="{mediaElement.description}">
+        <div class="medialement-alternative-content">
+            <p class="news-img-caption">
+                {mediaElement.description}
+            </p>
+        </div>
+    </f:if>
+</div>
+
+<f:if condition="{hhvideoextender.includeCss}">
+    <f:asset.css identifier="hhvideoextender.css" href="EXT:hh_video_extender/Resources/Public/Css/main.min.css" />
+</f:if>
+
+<f:if condition="{hhvideoextender.includeJavaScript}">
+    <f:render section="deferJavaScript" arguments="{file: mediaElement}" />
+    <f:render section="clickPreviewImageToShowVideo" arguments="{settings: hhvideoextender, file: mediaElement}" />
+</f:if>
+
+<f:section name="deferJavaScript">
+    <f:if condition="{file.originalResource.properties.defer}">
+        <f:asset.script identifier="hhvideoextender.videoDeferLoading" defer="1" src="EXT:hh_video_extender/Resources/Public/JavaScript/videoDeferLoading.min.js" />
+    </f:if>
+</f:section>
+
+<f:section name="clickPreviewImageToShowVideo">
+    <f:if condition="{settings.hhvideoextender.clickPreviewImageToShowVideo} || {file.originalResource.properties.click_preview_image_to_show_video}">
+        <f:asset.script identifier="hhvideoextender.clickPreviewImageToShowVideo" defer="1" src="EXT:hh_video_extender/Resources/Public/JavaScript/clickPreviewImageToShowVideo.js" />
+    </f:if>
+</f:section>
+
+</html>
