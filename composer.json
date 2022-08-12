@@ -14,7 +14,7 @@
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
-    "version": "0.1.70",
+    "version": "0.1.71",
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS", "extension"],
     "replace": {
