@@ -124,36 +124,42 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         }
 
         $previewImage = '';
-        // if override is set and typoscript previewImage is set
-        if($typoScript['previewOverride'] === '1' && !empty($typoScript['previewImage'])) {
-            $attributes[] = 'poster="'.$typoScript['previewImage'].'"';
+        $previewImageResult = '';
 
-            if($typoScript['showAllwaysPreviewImageAsImage'] === '1') {
-                $previewImage .= '<span class="video-preview">';
-                $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" />';
-                $previewImage .= '</span>';
-            }
-        } else if($typoScript['previewOverride'] === '0') { // standard behavior
-            $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
-            $fileObjects = $fileRepository->findByRelation('sys_file_reference', 'media', $file->getProperty('uid'));
-            if(!empty($fileObjects)) {
-                $attributes[] = 'poster="'.$fileObjects[0]->getPublicUrl().'"';
-
-                if($typoScript['showAllwaysPreviewImageAsImage'] === '1') {
-                    $previewImage .= '<span class="video-preview">';
-                    foreach ($fileObjects as $value) {
-                        $previewImage .= '<img src="'.$value->getPublicUrl().'" alt="'.$value->getAlternative().'" title="'.$value->getTitle().'" />';
-                    }
-                    $previewImage .= '</span>';
-                }
-            } else if(!empty($typoScript['previewImage'])) { // Fallback to previewImage from typoscript / contant-editor if set
+        if(empty($options['autoplay'])) {
+            // if override is set and typoscript previewImage is set
+            if($typoScript['previewOverride'] === '1' && !empty($typoScript['previewImage'])) {
                 $attributes[] = 'poster="'.$typoScript['previewImage'].'"';
 
                 if($typoScript['showAllwaysPreviewImageAsImage'] === '1') {
-                    $previewImage .= '<span class="video-preview">';
-                    $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" />';
-                    $previewImage .= '</span>';
+                    list($previewImageWidth, $previewImageHeight) = getimagesize($typoScript['previewImage']);
+                    $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" height="'.$previewImageHeight.'" width="'.$previewImageWidth.'" />';
                 }
+            } else if($typoScript['previewOverride'] === '0') { // standard behavior
+                $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+                $fileObjects = $fileRepository->findByRelation('sys_file_reference', 'media', $file->getProperty('uid'));
+                if(!empty($fileObjects)) {
+                    $attributes[] = 'poster="'.$fileObjects[0]->getPublicUrl().'"';
+
+                    if($typoScript['showAllwaysPreviewImageAsImage'] === '1') {
+                        foreach ($fileObjects as $value) {
+                            $previewImage .= '<img src="'.$value->getPublicUrl().'" alt="'.$value->getAlternative().'" title="'.$value->getTitle().'" height="'.$value->getProperty('height').'" width="'.$value->getProperty('width').'" />';
+                        }
+                    }
+                } else if(!empty($typoScript['previewImage'])) { // Fallback to previewImage from typoscript / contant-editor if set
+                    $attributes[] = 'poster="'.$typoScript['previewImage'].'"';
+
+                    if($typoScript['showAllwaysPreviewImageAsImage'] === '1') {
+                        list($previewImageWidth, $previewImageHeight) = getimagesize($typoScript['previewImage']);
+                        $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" height="'.$previewImageHeight.'" width="'.$previewImageWidth.'" />';
+                    }
+                }
+            }
+
+            if(!empty($previewImage)) {
+                $previewImageResult .= '<span class="video-preview">';
+                $previewImageResult .= $previewImage;
+                $previewImageResult .= '</span>';
             }
         }
 
@@ -209,6 +215,6 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         );
         $videoTagEnd = '</video>';
 
-        return $videoTagBegin . $videoSources . $videoTagEnd . $previewImage;
+        return $videoTagBegin . $videoSources . $videoTagEnd . $previewImageResult;
     }
 }

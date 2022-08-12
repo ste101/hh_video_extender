@@ -44,20 +44,36 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer {
         $typoScript = $settings['plugin.']['tx_hhvideoextender.']['settings.'];
 
         $previewImage = '';
-        // if previewImage in TypoScript is set and should override images from content-element
-        if($typoScript['previewOverride'] === '1' && !empty($typoScript['previewImage'])) {
-            $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" />';
-        } else if($typoScript['previewOverride'] === '0') {
-            $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
-            $fileObjects = $fileRepository->findByRelation('sys_file_reference', 'media', $file->getProperty('uid'));
-            if(!empty($fileObjects)) {
-                $previewImage .= '<span class="video-preview">';
-                foreach ($fileObjects as $value) {
-                    $previewImage .= '<img src="'.$value->getPublicUrl().'" alt="'.$value->getAlternative().'" title="'.$value->getTitle().'" />';
+        $previewImageResult = '';
+
+        $options = $this->collectOptions($options, $file);
+        $options['relatedVideos'] = $file->getProperty('relatedVideos');
+        $options['autoplay'] = $file->getProperty('autoplay');
+        $options['loop'] = $file->getProperty('loop');
+        $options['controls'] = $file->getProperty('controls') ? 2 : 0;
+
+        if (empty($options['autoplay'])) {
+            // if previewImage in TypoScript is set and should override images from content-element
+            if($typoScript['previewOverride'] === '1' && !empty($typoScript['previewImage'])) {
+                list($previewImageWidth, $previewImageHeight) = getimagesize($typoScript['previewImage']);
+                $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" height="'.$previewImageHeight.'" width="'.$previewImageWidth.'" />';
+            } else if($typoScript['previewOverride'] === '0') {
+                $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+                $fileObjects = $fileRepository->findByRelation('sys_file_reference', 'media', $file->getProperty('uid'));
+                if(!empty($fileObjects)) {
+                    foreach ($fileObjects as $value) {
+                        $previewImage .= '<img src="'.$value->getPublicUrl().'" alt="'.$value->getAlternative().'" title="'.$value->getTitle().'" height="'.$value->getProperty('height').'" width="'.$value->getProperty('width').'" />';
+                    }
+                } else if(!empty($typoScript['previewImage'])) {
+                    list($previewImageWidth, $previewImageHeight) = getimagesize($typoScript['previewImage']);
+                    $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" height="'.$previewImageHeight.'" width="'.$previewImageWidth.'" />';
                 }
-                $previewImage .= '</span>';
-            } else if(!empty($typoScript['previewImage'])) {
-                $previewImage .= '<img src="'.$typoScript['previewImage'].'" alt="'.$typoScript['previewImage_alt'].'" title="'.$typoScript['previewImage_title'].'" />';
+            }
+
+            if(!empty($previewImage)) {
+                $previewImageResult .= '<span class="video-preview">';
+                $previewImageResult .= $previewImage;
+                $previewImageResult .= '</span>';
             }
         }
 
@@ -66,10 +82,10 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer {
             $string = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
             $newString = str_replace('<iframe', '<iframe class="video-defer"', $string);
             $dataSrc = str_replace('src=', 'data-src=', $newString);
-            return $dataSrc.$previewImage;
+            return $dataSrc.$previewImageResult;
         }
 
         $original = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
-        return $original.$previewImage;
+        return $original.$previewImageResult;
     }
 }

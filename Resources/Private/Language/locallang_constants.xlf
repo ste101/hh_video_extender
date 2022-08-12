@@ -4,6 +4,14 @@
         <header/>
         <body>
 
+            <trans-unit id="config.includeCss" xml:space="preserve">
+                <source>Automatic CSS integration, if required?</source>
+            </trans-unit>
+
+            <trans-unit id="config.includeJavaScript" xml:space="preserve">
+                <source>Automatic JavaScript integration, if required?</source>
+            </trans-unit>
+
             <trans-unit id="config.previewImage" xml:space="preserve">
                 <source>URL / Path of the preview image (e. g. fileadmin/user_upload/myImage.jpg)</source>
             </trans-unit>
@@ -22,6 +30,10 @@
 
             <trans-unit id="config.showAllwaysPreviewImageAsImage" xml:space="preserve">
                 <source>Should the preview image always be output as a separate image tag?</source>
+            </trans-unit>
+
+            <trans-unit id="config.clickPreviewImageToShowVideo" xml:space="preserve">
+                <source>Should the video only be visible after clicking on the preview image (also with defer-option: on)?</source>
             </trans-unit>
 
         </body>

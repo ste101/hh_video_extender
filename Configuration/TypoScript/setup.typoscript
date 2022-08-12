@@ -1,20 +1,27 @@
-page {
-    includeCSS {
-        HhVideoExtender = EXT:hh_video_extender/Resources/Public/Css/main.min.css
-    }
-
-    includeJSFooter {
-        HhVideoExtender = EXT:hh_video_extender/Resources/Public/JavaScript/main.min.js
-        HhVideoExtender.defer = 1
-    }
-}
-
 plugin.tx_hhvideoextender {
     settings {
+        includeCss = {$plugin.tx_hhvideoextender.includeCss}
+        includeJavaScript = {$plugin.tx_hhvideoextender.includeJavaScript}
         previewImage = {$plugin.tx_hhvideoextender.previewImage}
         previewImage_alt = {$plugin.tx_hhvideoextender.previewImage_alt}
         previewImage_title = {$plugin.tx_hhvideoextender.previewImage_title}
         previewOverride = {$plugin.tx_hhvideoextender.previewOverride}
         showAllwaysPreviewImageAsImage = {$plugin.tx_hhvideoextender.showAllwaysPreviewImageAsImage}
+        clickPreviewImageToShowVideo = {$plugin.tx_hhvideoextender.clickPreviewImageToShowVideo}
+    }
+}
+
+lib.contentElement {
+    settings {
+        hhvideoextender {
+            includeCss = {$plugin.tx_hhvideoextender.includeCss}
+            includeJavaScript = {$plugin.tx_hhvideoextender.includeJavaScript}
+            previewImage = {$plugin.tx_hhvideoextender.previewImage}
+            previewImage_alt = {$plugin.tx_hhvideoextender.previewImage_alt}
+            previewImage_title = {$plugin.tx_hhvideoextender.previewImage_title}
+            previewOverride = {$plugin.tx_hhvideoextender.previewOverride}
+            showAllwaysPreviewImageAsImage = {$plugin.tx_hhvideoextender.showAllwaysPreviewImageAsImage}
+            clickPreviewImageToShowVideo = {$plugin.tx_hhvideoextender.clickPreviewImageToShowVideo}
+        }
     }
 }

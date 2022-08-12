@@ -1,39 +1,34 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext: "hh_video_extender"
+ * Extension Manager/Repository config file for ext "hh_video_extender".
  *
+ * Auto generated 12-08-2022 06:03
  *
  * Manual updates:
- * Only the data in the array - anything else is removed by next write.
- * "version" and "dependencies" must not be touched!
+ * Only the data in the array - everything else is removed by next
+ * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
 $EM_CONF['hh_video_extender'] = [
     'title' => 'Hauer-Heinrich - Video Extender',
     'description' => 'Hauer-Heinrich - Extends sys_file_reference video/media. Added attributes to select in content element (eg textmedia) like: muted, loop, controls, previewImage and so on.',
     'category' => 'fe',
+    'version' => '0.1.7',
+    'state' => 'beta',
+    'uploadfolder' => false,
+    'clearcacheonload' => false,
     'author' => 'Christian Hackl',
     'author_email' => 'chackl@hauer-heinrich.de',
-    'state' => 'beta',
-    'internal' => '',
-    'uploadfolder' => '0',
-    'createDirs' => '',
-    'clearCacheOnLoad' => 0,
-    'version' => '0.1.64',
+    'author_company' => 'www.hauer-heinrich.de',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-11.5.99',
-            'fluid_styled_content' => '9.5.0-11.5.99'
+            'typo3' => '10.4.0-11.5.99',
+            'fluid_styled_content' => '10.4.0-11.5.99',
         ],
         'conflicts' => [
         ],
         'suggests' => [
-        ],
-    ],
-    'autoload' => [
-        'psr-4' => [
-            'HauerHeinrich\\HhVideoExtender\\' => 'Classes'
         ],
     ],
 ];

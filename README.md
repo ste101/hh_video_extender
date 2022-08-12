@@ -26,6 +26,34 @@ Extends TYPO3 core videorenderer with properties like:
 ### Deprecated
 - currently nothing
 
+## Explanations
+- Option "defer" uses JavaScript which is included, but it is recommended to use your own JavaScript or copy this to your JavaScript library. Cause of loading extra file for a view lines of code.
+
+### TypoScript Constants
+- TypoScript constants are editable via the Constants-Editor at the TYPO3 backend.
+
+##### includeCss
+Enable or disable automaticaly inclusion of the CSS file(s) of this Extension (default: on).
+The file is automatically included only when it is needed. See FLUID file: [Video.html](Resources/Private/Partials/Media/Type/Video.html).
+##### includeJavaScript
+Enable or disable automaticaly inclusion of the JavaScript file(s) of this Extension (default: on).
+The file is automatically included only when it is needed. See FLUID file: [Video.html](Resources/Private/Partials/Media/Type/Video.html).
+##### previewImage
+Set the path to the default previewImage, this image is also used as fallback if no PreviewImage is set at the ContentElement (CE).
+##### previewImage_alt
+Set the previewImage html-alt-attribute.
+##### previewImage_title
+Set the previewImage html-title-attribute.
+##### previewOverride
+Overwrites the preview image that was inserted via the ContentElement (CE) (default: off).
+##### showAllwaysPreviewImageAsImage
+Default show PreviewImage as html-poster-attribute. If you turn this option on, the PreviewImage will always be output as img tag as well (default: off).
+Only valid for local videos, not for youtube and vimeo etc!
+##### clickPreviewImageToShowVideo
+Should the video only be visible after clicking on the PreviewImage? Default: off - as soon as the video is loaded, the video is displayed immediately. This option only hides the preview-image (-wrapper), no autoplay of the video!
+This option uses JavaScript which is included, but it is recommended to use your own JavaScript or copy this to your JavaScript library. Cause of loading extra file for a view lines of code.
+(default: off).
+
 ### IMPORTENT NOTICE
 - Vimeo is not tested!
 - If you have problems with autoplay video on IE/EDGE then try to set "options.preload" to "auto".

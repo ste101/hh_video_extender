@@ -132,6 +132,22 @@ $customColumns = [
             $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
         ),
     ],
+    'click_preview_image_to_show_video' => [
+        'exclude' => true,
+        'label' => 'Show the video only after clicking on the preview image',
+        'description' => '',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+            'default' => 1,
+            'items' => [
+                [
+                    0 => '',
+                    1 => '',
+                ]
+            ],
+        ]
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
@@ -142,5 +158,5 @@ $customColumns = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'sys_file_reference',
     'videoOverlayPalette',
-    'loop, muted, preload, defer, relatedVideos, controls, --linebreak--, preview_image'
+    'loop, muted, preload, defer, relatedVideos, controls, --linebreak--, preview_image, --linebreak--, click_preview_image_to_show_video'
 );

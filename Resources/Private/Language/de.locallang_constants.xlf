@@ -4,6 +4,14 @@
         <header/>
         <body>
 
+            <trans-unit id="config.includeCss" xml:space="preserve">
+                <target>Automatische CSS einbindung, falls erforderlich?</target>
+            </trans-unit>
+
+            <trans-unit id="config.includeJavaScript" xml:space="preserve">
+                <target>Automatische JavaScript einbindung, falls erforderlich?</target>
+            </trans-unit>
+
             <trans-unit id="config.previewImage">
                 <target>URL / Pfad zu dem preview Bild (e. g. fileadmin/user_upload/myImage.jpg)</target>
             </trans-unit>
@@ -22,6 +30,10 @@
 
             <trans-unit id="config.showAllwaysPreviewImageAsImage">
                 <target>Soll das preview Bild immer als seperates Image-Tag ausgegeben werden?</target>
+            </trans-unit>
+
+            <trans-unit id="config.clickPreviewImageToShowVideo" xml:space="preserve">
+                <target>Soll das Video erst sichtbar werden nach klick auf das Preview Bild (auch bei defer-option: an)?</target>
             </trans-unit>
 
         </body>

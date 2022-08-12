@@ -6,4 +6,5 @@ CREATE TABLE sys_file_reference (
     defer tinyint(4) DEFAULT '0' NOT NULL,
     relatedVideos tinyint(4) DEFAULT '0' NOT NULL,
     preview_image int(11) unsigned NOT NULL default '0',
+    click_preview_image_to_show_video tinyint(4) DEFAULT '0' NOT NULL,
 );

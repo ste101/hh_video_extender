@@ -27,9 +27,11 @@
 
     .video-preview {
         left: 0;
+        opacity: 1;
         position: absolute;
         top: 0;
         width: 100%;
+        transition: opacity 500ms;
     }
 
     .video-defer {
@@ -44,6 +46,23 @@
 
         .video-defer {
             opacity: 1;
+        }
+    }
+}
+
+[data-click-previewimage="1"] {
+    .video-embed {
+        &,
+        &.loaded {
+            .video-preview {
+                display: block;
+                opacity: 1;
+
+                &.hide {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
         }
     }
 }

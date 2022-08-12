@@ -17,9 +17,11 @@
     max-width: 100%; }
   .video-embed .video-preview {
     left: 0;
+    opacity: 1;
     position: absolute;
     top: 0;
-    width: 100%; }
+    width: 100%;
+    transition: opacity 500ms; }
   .video-embed .video-defer {
     opacity: 0;
     transition: all 500ms; }
@@ -27,5 +29,12 @@
     display: none; }
   .video-embed.loaded .video-defer {
     opacity: 1; }
+
+[data-click-previewimage="1"] .video-embed .video-preview, [data-click-previewimage="1"] .video-embed.loaded .video-preview {
+  display: block;
+  opacity: 1; }
+  [data-click-previewimage="1"] .video-embed .video-preview.hide, [data-click-previewimage="1"] .video-embed.loaded .video-preview.hide {
+    opacity: 0;
+    pointer-events: none; }
 
 /*# sourceMappingURL=sourcemaps/main.css.map */
