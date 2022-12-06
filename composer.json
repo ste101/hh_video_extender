@@ -10,11 +10,18 @@
             "role": "Developer"
         }
     ],
-    "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
+    "support": {
+        "issues": "https://github.com/Hauer-Heinrich/hh_video_extender/issues",
+        "source": "https://github.com/Hauer-Heinrich/hh_video_extender",
+        "docs": "https://github.com/Hauer-Heinrich/hh_video_extender/blob/master/README.md"
     },
-    "version": "0.1.71",
+    "funding": [
+        {
+            "type": "paypal",
+            "url": "https://www.paypal.com/paypalme/hauerheinrich"
+        }
+    ],
+    "version": "0.1.73",
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS", "extension"],
     "replace": {
