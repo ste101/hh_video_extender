@@ -1,8 +1,7 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 call_user_func(function() {
-
     $extensionKey = 'hh_video_extender';
 
     // If automatically include of TypoScript is disabled, then you can include it in the (BE) static-template select-box

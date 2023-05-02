@@ -1,7 +1,7 @@
 <?php
 namespace HauerHeinrich\HhVideoExtender\UserFunc;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+// use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class CheckFile {
 

@@ -1,4 +1,6 @@
 <?php
+defined('TYPO3') || die();
+
 $customColumns = [
     'controls' => [
         // 'displayCond' => 'USER:HauerHeinrich\\HhVideoExtender\\UserFunc\\CheckFile->isLocalFile',

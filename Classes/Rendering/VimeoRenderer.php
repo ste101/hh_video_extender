@@ -14,9 +14,9 @@ namespace HauerHeinrich\HhVideoExtender\Rendering;
  * The TYPO3 project - inspiring people to share!
  */
 
-// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Resource\FileInterface;
+// use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Resource\FileInterface;
 
 /**
  * Vimeo renderer class
@@ -34,8 +34,7 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer {
      * @return string
      */
     public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false) {
-        $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-        $configurationManager = $objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+        $configurationManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
         $settings = $configurationManager->getConfiguration(
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             'hh_video_extender',
