@@ -5,7 +5,7 @@ call_user_func(function() {
     $extensionKey = 'hh_video_extender';
 
     // automatically add TypoScript, can be disabled in the extension configuration (BE)
-    if ($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][$extensionKey]['config']['typoScript'] === '1') {
+    if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][$extensionKey]['config']['typoScript']) && $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][$extensionKey]['config']['typoScript'] === '1') {
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('@import "EXT:'.$extensionKey.'/Configuration/TypoScript/constants.typoscript"');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('@import "EXT:'.$extensionKey.'/Configuration/TypoScript/setup.typoscript"');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('@import "EXT:'.$extensionKey.'/Configuration/TypoScript/addFluid.typoscript"');
