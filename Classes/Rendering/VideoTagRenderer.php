@@ -18,6 +18,7 @@ namespace HauerHeinrich\HhVideoExtender\Rendering;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Resource\FileInterface;
 use \TYPO3\CMS\Core\Resource\FileReference;
+use \TYPO3\CMS\Core\Core\Environment;
 
 class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRenderer {
 
@@ -170,7 +171,7 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
 
         $videoSources = '';
         // webm
-        if(file_exists($removedExtension.'webm')) {
+        if(file_exists(Environment::getVarPath().$removedExtension.'webm')) {
             $videoSources .= sprintf(
                 '<source src="%s" type="%s">',
                 htmlspecialchars($removedExtension.'webm'),
@@ -186,21 +187,21 @@ class VideoTagRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VideoTagRender
         );
 
         // ogv - ogg - ogm
-        if(file_exists($removedExtension.'ogv')) {
+        if(file_exists(Environment::getVarPath().$removedExtension.'ogv')) {
             $videoSources .= sprintf(
                 '<source src="%s" type="%s">',
                 htmlspecialchars($removedExtension.'ogv'),
                 "video/ogg"
             );
         }
-        if(file_exists($removedExtension.'ogg')) {
+        if(file_exists(Environment::getVarPath().$removedExtension.'ogg')) {
             $videoSources .= sprintf(
                 '<source src="%s" type="%s">',
                 htmlspecialchars($removedExtension.'ogg'),
                 "video/ogg"
             );
         }
-        if(file_exists($removedExtension.'ogm')) {
+        if(file_exists(Environment::getVarPath().$removedExtension.'ogm')) {
             $videoSources .= sprintf(
                 '<source src="%s" type="%s">',
                 htmlspecialchars($removedExtension.'ogm'),
